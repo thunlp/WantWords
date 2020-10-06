@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <link rel="shortcut icon" href="../static/image/zm2.ico">
+  <link rel="bookmark" href="../static/image/zm2.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+  <title>万词王 关于我们</title>
+  <link rel="stylesheet" href="http://apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+  <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css"> 
+
+  <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="http://apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+  
+    <style>
+        html {
+            height: 100%;
+        }
+        body {
+          min-height: 100%;
+          display: flex;
+          flex-direction: column;
+        }
+        .content {
+          flex: 1;
+        }
+        .navbar-nav>li>a {
+            padding-top: 22.5px;
+            padding-bottom: 22.5px;
+        }
+        .container-fluid {
+          background-color: #f8f8f8;
+        }
+        div p.justify {
+          text-align:justify;
+        }
+    </style>
+    <style>
+    /* Custom Styles */
+        ul.nav-tabs{
+            width: 140px;
+            margin-top: 20px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+        }
+        ul.nav-tabs li{
+            margin: 0;
+            border-top: 1px solid #ddd;
+        }
+        ul.nav-tabs li:first-child{
+            border-top: none;
+        }
+        ul.nav-tabs li a{
+            margin: 0;
+            padding: 8px 16px;
+            border-radius: 0;
+        }
+        ul.nav-tabs li.active a, ul.nav-tabs li.active a:hover{
+            color: #fff;
+            background: #0088cc;
+            border: 1px solid #0088cc;
+        }
+        ul.nav-tabs li:first-child a{
+            border-radius: 4px 4px 0 0;
+        }
+        ul.nav-tabs li:last-child a{
+            border-radius: 0 0 4px 4px;
+        }
+        ul.nav-tabs.affix{
+            top: 50px; /* Set the top position of pinned element */
+        }
+    </style>
+    
+    <script>
+    $(document).ready(function(){
+        $("#myNav").affix({
+            offset: { 
+                top: 125 
+          }
+        });
+    });
+    $(function() {
+        $(".navbar-nav>li.active>a").css("background-color", "#f3f3f3");
+    });
+    </script>
+    
+</head>
+<body data-spy="scroll" data-target="#myScrollspy">
+<!--WebPageHead-->
+<div class="visible-lg visible-md visible-sm">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation"> 
+        <div class="container-fluid"> 
+            <div class="navbar-header" style="height: 65px;"> 
+                <a class="navbar-brand" href="../home" style="padding-top: 0px;"><img src="../static/image/logo.png" alt="反向词典" style="height:55px;margin-left: 20px;margin-top: 5px;"/></a> 
+            </div>
+            <ul class="nav navbar-nav" style="float: right;"> 
+                <li><a href="../home">反向词典主页</a></li> 
+                <!--<li><a href="../papers/">相关研究</a></li> -->
+                <li class="active"><a href="../about/">关于我们</a></li> 
+                <li><a href="https://github.com/thunlp/MultiRD" style="margin-right: 50px;">GitHub链接</a></li>
+                <!--<li><a href="../help/" style="margin-right: 50px;">使用帮助</a></li> --> 
+            </ul>  
+        </div> 
+    </nav>
+</div>
+<div class="visible-xs">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation"> 
+        <div class="container-fluid"> 
+            <div class="navbar-header" style="height: 65px;"> 
+                <a class="navbar-brand" href="../home" style="padding-top: 0px;"><img src="../static/image/logo.png" alt="反向词典" style="height:55px;margin-left: 0px;margin-top: 5px;"/></a> 
+                <div class="btn-group" style="float: right; margin-right: 50px;">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="color: #286090;border-color: #f8f8f8;background-color: #f8f8f8;font-size: 1.5em;margin-top: 10px;">
+                        <span class="glyphicon glyphicon-align-justify"></span> <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="../home"><span class="glyphicon glyphicon-home"></span> 主页</a></li> 
+                        <li class="active"><a href="../about/">关于我们</a></li> 
+                        <li><a href="https://github.com/thunlp/MultiRD">GitHub链接</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div> 
+    </nav>
+</div>
+<div class="content">
+    
+    <div class="container">
+        <div class="page-header" style="margin-top: 100px;">
+            <h1>关于我们</h1>
+        </div>
+        <div class="visible-lg visible-md visible-sm">
+            <div class="row">
+                <div class="col-xs-3" id="myScrollspy">
+                    <ul class="nav nav-tabs nav-stacked" id="myNav" style="width: 200px;">
+                        <li class="active"><a href="#section-1">清华大学人工智能研究院</a></li>
+                        <!--<li><a href="#section-2">知识智能研究中心</a></li>-->
+                        <li><a href="#section-3">清华大学自然语言处理与社会人文计算实验室</a></li>
+                        <li><a href="#section-4">THUNLP学术带头人孙茂松教授简介</a></li>
+                        <li><a href="#section-5">联系方式</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-9">
+                    <h2 id="section-1">清华大学人工智能研究院</h2>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div id="THUAI">
+                                        <p style="padding-right:10vh;padding-top:3vh" class="justify">
+                                            清华大学人工智能研究院为校级跨学科交叉科研机构，成立于2018年6月28日。研究院以“一个核心、两个融合”作为发展战略，即以人工智能基础理论和基本方法研究为核心，积极推进大跨度的学科交叉融合，积极推进大范围的技术与产业、学校与企业融合，充分发挥清华大学在多学科综合、优秀人才汇聚、高水平国际合作等方面的独特优势，在人工智能的基础理论和基本方法上开展源头性和颠覆性创新，力争将人工智能研究院打造成为一个具有全球影响力的人工智能高端研究机构。院长为清华大学计算机系教授、中国科学院院士张钹，学术委员会主任为清华大学交叉信息研究院院长、图灵奖获得者姚期智。</p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <img src="https://openhownet.thunlp.org/static/img/thuai.png" align="right" style="height:18vh;margin-top:0vh;padding-right:7vh">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <hr>
+                    <!--<h2 id="section-2">知识智能研究中心</h2>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div id="knowledge_center">
+                                        <p style="padding-right:10vh;padding-top:3vh">
+                                            清华大学人工智能研究院知识智能研究中心（以下简称“知识中心”）成立于2019年1月21日，是清华大学人工智能研究院成立的首个研究中心，由清华大学教授李涓子担任主任。知识中心旨在：（1）开展理论研究。研究支持鲁棒可解释人工智能的大规模知识的表示、获取、推理与计算的基础理论和有效方法。（2）构建知识平台。建设中英平衡的、涵盖语言知识、常识知识、世界知识、认知知识与典型行业知识的大规模知识图谱，建成知识计算服务平台。（3）促进交流合作。经常性地组织知识智能有关学术活动，增进学术交流；普及知识智能技术，促进产学合作。知识中心将以促进清华和国家知识智能研究与发展为宗旨，最终建设成为国际先进、国内领先、具有广泛影响力的学术研究高地、知识计算平台与学术交流中心。</p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <img src="https://openhownet.thunlp.org/static/img/knowledge_center.png" align="right" style="height:17vh;margin-top:0vh;margin-right:2vh">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>                
+                    <hr>-->
+                    <h2 id="section-3">清华大学自然语言处理与社会人文计算实验室</h2>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p style="padding-right:10vh;padding-top:3vh" class="justify"> 清华大学计算机系自然语言处理与社会人文计算实验室（<a href="http://www.thunlp.org">THUNLP</a>）成立于20世纪70年代末，最初在黄昌宁教授的带领下从事中文信息处理方面的研究工作，是国内开展自然语言处理研究最早、深具影响力的科研单位，同时也是中国中文信息学会（全国一级学会）计算语言学专业委员会的挂靠单位。实验室学术带头人为孙茂松教授，实验室教师队伍还包括刘洋教授和刘知远副教授。实验室面向以中文为核心的自然语言处理前沿基础课题开展系统深入的研究工作，研究领域涵盖计算语言学的核心问题以及社会计算和人文计算，近年来在973、863、国家自然科学基金等项目的支持下，实验室师生在IJCAI、AAAI、ACL、EMNLP等国际顶级会议和期刊上发表多篇高水平学术论文，与CMU、NUS、Google等国际名校和企业有长期良好的合作关系，培养的优秀毕业生大多到清华大学、谷歌、百度、阿里、微软等著名高校和企业工作。
+                                    </p>
+                                    <p style="padding-right:10vh" class="justify">
+                                        <b>WantWords</b>由THUNLP开发和维护，项目指导教师为孙茂松教授和刘知远副教授，开发团队成员包括岂凡超，张磊，杨延辉。</p>
+                                </td>
+                                <td>
+                                    <img src="https://openhownet.thunlp.org/static/img/THUNLP.png" style="height:21vh;padding-right:6vh;" align="right">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table> 
+                    <hr>
+                    <h2 id="section-4">THUNLP学术带头人孙茂松教授简介</h2>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div id="sms">
+                                        <p style="padding-right:10vh;padding-top:3vh" class="justify">
+                                            孙茂松，清华大学计算机系教授，清华大学人工智能研究院常务副院长，博士生导师。主要研究领域为自然语言处理、互联网智能、机器学习、社会计算和计算教育学。国家重点基础研究发展计划（973计划）项目首席科学家，国家社会科学基金重大项目首席专家。在国际和国内学术期刊及会议上共发表论文400余篇，近三年发表60余篇，是大陆研究机构中最早在自然语言处理国际顶级会议ACL（1998年）和顶级期刊CL（2009年）发表论文的学者，Google
+                                            Scholar引用10000余次，主持完成文本信息处理领域ISO国际标准2项。2013年带领团队研发全球第一个中文慕课平台“学堂在线”，为我国和清华的在线教育事业作出了重要贡献。曾获2007年全国语言文字先进工作者，2016年全国优秀科技工作者，2016年首都市民学习之星等荣誉。</p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <img src="https://openhownet.thunlp.org/static/img/sms.jpeg" align="right" style="height:21vh;margin-top:0px;padding-right:5vh">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table> 
+                    <hr>
+                    <h2 id="section-5">联系方式</h2>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div id="Contact">
+                                        <br>
+                                        <ul>
+                                            <li><p>电话：(+8610) 62777701</p></li>
+                                            <li><p>地址：北京市海淀区清华大学FIT楼4-505</p></li>
+                                            <li><p>邮编：100094</p></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table> 
+                </div>
+            </div>
+        </div>
+        <div class="visible-xs">
+            <br>
+            <h2 id="section-1" align="center">清华大学人工智能研究院</h2>
+            <div align="center"><img src="https://openhownet.thunlp.org/static/img/thuai.png" style="height:18vh;margin-top:2vh"></div>
+            <div id="THUAI">
+                <p style="padding-top:3vh" class="justify">
+                    清华大学人工智能研究院为校级跨学科交叉科研机构，成立于2018年6月28日。研究院以“一个核心、两个融合”作为发展战略，即以人工智能基础理论和基本方法研究为核心，积极推进大跨度的学科交叉融合，积极推进大范围的技术与产业、学校与企业融合，充分发挥清华大学在多学科综合、优秀人才汇聚、高水平国际合作等方面的独特优势，在人工智能的基础理论和基本方法上开展源头性和颠覆性创新，力争将人工智能研究院打造成为一个具有全球影响力的人工智能高端研究机构。院长为清华大学计算机系教授、中国科学院院士张钹，学术委员会主任为清华大学交叉信息研究院院长、图灵奖获得者姚期智。</p>
+            </div>
+
+            <!--<hr>
+            <h2 id="section-2" align="center">知识智能研究中心</h2>
+            <div align="center"><img src="https://openhownet.thunlp.org/static/img/knowledge_center.png" style="height:17vh;margin-top:2vh"></div>
+            <div id="knowledge_center">
+                <p style="padding-top:3vh">
+                    清华大学人工智能研究院知识智能研究中心（以下简称“知识中心”）成立于2019年1月21日，是清华大学人工智能研究院成立的首个研究中心，由清华大学教授李涓子担任主任。知识中心旨在：（1）开展理论研究。研究支持鲁棒可解释人工智能的大规模知识的表示、获取、推理与计算的基础理论和有效方法。（2）构建知识平台。建设中英平衡的、涵盖语言知识、常识知识、世界知识、认知知识与典型行业知识的大规模知识图谱，建成知识计算服务平台。（3）促进交流合作。经常性地组织知识智能有关学术活动，增进学术交流；普及知识智能技术，促进产学合作。知识中心将以促进清华和国家知识智能研究与发展为宗旨，最终建设成为国际先进、国内领先、具有广泛影响力的学术研究高地、知识计算平台与学术交流中心。</p>
+            </div>-->
+
+            <hr>
+            <h2 id="section-3" align="center">清华大学自然语言处理与社会人文计算实验室</h2>
+            <div align="center"><img src="https://openhownet.thunlp.org/static/img/THUNLP.png" style="height:21vh;margin-top:2vh"></div>
+            <p style="padding-top:3vh" class="justify"> 清华大学计算机系自然语言处理与社会人文计算实验室（<a href="http://www.thunlp.org">THUNLP</a>）成立于20世纪70年代末，最初在黄昌宁教授的带领下从事中文信息处理方面的研究工作，是国内开展自然语言处理研究最早、深具影响力的科研单位，同时也是中国中文信息学会（全国一级学会）计算语言学专业委员会的挂靠单位。实验室学术带头人为孙茂松教授，实验室教师队伍还包括刘洋教授和刘知远副教授。实验室面向以中文为核心的自然语言处理前沿基础课题开展系统深入的研究工作，研究领域涵盖计算语言学的核心问题以及社会计算和人文计算，近年来在973、863、国家自然科学基金等项目的支持下，实验室师生在IJCAI、AAAI、ACL、EMNLP等国际顶级会议和期刊上发表多篇高水平学术论文，与CMU、NUS、Google等国际名校和企业有长期良好的合作关系，培养的优秀毕业生大多到清华大学、谷歌、百度、阿里、微软等著名高校和企业工作。
+            </p>
+            <p class="justify"><b>WantWords</b>由THUNLP开发和维护，项目指导教师为孙茂松教授和刘知远副教授，开发团队成员包括岂凡超，张磊，杨延辉。</p>
+                            
+            <hr>
+            <h2 id="section-4" align="center">THUNLP学术带头人孙茂松教授简介</h2>
+            <div align="center"><img src="https://openhownet.thunlp.org/static/img/sms.jpeg" style="height:21vh;margin-top:2vh"></div>
+            <div id="sms">
+                <p style="padding-top:3vh" class="justify">
+                    孙茂松，清华大学计算机系教授，清华大学人工智能研究院常务副院长，博士生导师。主要研究领域为自然语言处理、互联网智能、机器学习、社会计算和计算教育学。国家重点基础研究发展计划（973计划）项目首席科学家，国家社会科学基金重大项目首席专家。在国际和国内学术期刊及会议上共发表论文400余篇，近三年发表60余篇，是大陆研究机构中最早在自然语言处理国际顶级会议ACL（1998年）和顶级期刊CL（2009年）发表论文的学者，Google
+                    Scholar引用10000余次，主持完成文本信息处理领域ISO国际标准2项。2013年带领团队研发全球第一个中文慕课平台“学堂在线”，为我国和清华的在线教育事业作出了重要贡献。曾获2007年全国语言文字先进工作者，2016年全国优秀科技工作者，2016年首都市民学习之星等荣誉。</p>
+            </div>
+                            
+            <hr>
+            <h2 id="section-5">联系方式</h2>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div id="Contact">
+                                <br>
+                                <ul>
+                                    <li><p>电话：(+8610) 62777701</p></li>
+                                    <li><p>地址：北京市海淀区清华大学FIT楼4-505</p></li>
+                                    <li><p>邮编：100094</p></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table> 
+        </div>
+    </div>
+</div>
+
+
+<footer>
+    <center style="padding-top: 15px; padding-bottom: 10px; width: 100%; font-size: 17px;"> <!--background: #fff url(http://apps.bdimg.com/libs/jqueryui/1.10.4/css/images/ui-bg_highlight-soft_75_cccccc_1x100.png) 50% 50% repeat-x;-->
+        <div class="container">
+            <p><strong>Copyright &copy; </strong><a href="http://www.thunlp.org"><strong>THUNLP</strong></a> <strong>2020</strong></p>
+        </div>
+    </center>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <link rel="shortcut icon" href="../static/image/zm2.ico">
+  <link rel="bookmark" href="../static/image/zm2.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+  <title>WantWords About Us</title>
+  <link rel="stylesheet" href="http://apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+  <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css"> 
+
+  <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="http://apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+  
+    <style>
+        html {
+            height: 100%;
+        }
+        body {
+          min-height: 100%;
+          display: flex;
+          flex-direction: column;
+        }
+        .content {
+          flex: 1;
+        }
+        .navbar-nav>li>a {
+            padding-top: 22.5px;
+            padding-bottom: 22.5px;
+        }
+        .container-fluid {
+          background-color: #f8f8f8;
+        }
+        div p.justify {
+          text-align:justify;
+        }
+    </style>
+    <style>
+    /* Custom Styles */
+        ul.nav-tabs{
+            width: 140px;
+            margin-top: 20px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+        }
+        ul.nav-tabs li{
+            margin: 0;
+            border-top: 1px solid #ddd;
+        }
+        ul.nav-tabs li:first-child{
+            border-top: none;
+        }
+        ul.nav-tabs li a{
+            margin: 0;
+            padding: 8px 16px;
+            border-radius: 0;
+        }
+        ul.nav-tabs li.active a, ul.nav-tabs li.active a:hover{
+            color: #fff;
+            background: #0088cc;
+            border: 1px solid #0088cc;
+        }
+        ul.nav-tabs li:first-child a{
+            border-radius: 4px 4px 0 0;
+        }
+        ul.nav-tabs li:last-child a{
+            border-radius: 0 0 4px 4px;
+        }
+        ul.nav-tabs.affix{
+            top: 50px; /* Set the top position of pinned element */
+        }
+    </style>
+    
+    <script>
+    $(document).ready(function(){
+        $("#myNav").affix({
+            offset: { 
+                top: 125 
+          }
+        });
+    });
+    $(function() {
+        $(".navbar-nav>li.active>a").css("background-color", "#f3f3f3");
+    });
+    </script>
+    
+</head>
+<body data-spy="scroll" data-target="#myScrollspy">
+<!--WebPageHead-->
+<div class="visible-lg visible-md visible-sm">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation"> 
+        <div class="container-fluid"> 
+            <div class="navbar-header" style="height: 65px;"> 
+                <a class="navbar-brand" href="../home" style="padding-top: 0px;"><img src="../static/image/logo.png" alt="反向词典" style="height:55px;margin-left: 20px;margin-top: 5px;"/></a> 
+            </div>
+            <ul class="nav navbar-nav" style="float: right;"> 
+                <li><a href="../home">Home Page</a></li> 
+                <!--<li><a href="../papers/">相关研究</a></li> -->
+                <li class="active"><a href="../about_en/">About Us</a></li> 
+                <li><a href="https://github.com/thunlp/MultiRD" style="margin-right: 50px;">GitHub Link</a></li>
+                <!--<li><a href="../help/" style="margin-right: 50px;">使用帮助</a></li> --> 
+            </ul>  
+        </div> 
+    </nav>
+</div>
+<div class="visible-xs">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation"> 
+        <div class="container-fluid"> 
+            <div class="navbar-header" style="height: 65px;"> 
+                <a class="navbar-brand" href="../home" style="padding-top: 0px;"><img src="../static/image/logo.png" alt="反向词典" style="height:55px;margin-left: 0px;margin-top: 5px;"/></a> 
+                <div class="btn-group" style="float: right; margin-right: 50px;">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="color: #286090;border-color: #f8f8f8;background-color: #f8f8f8;font-size: 1.5em;margin-top: 10px;">
+                        <span class="glyphicon glyphicon-align-justify"></span> <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="../home"><span class="glyphicon glyphicon-home"></span> Home</a></li> 
+                        <li class="active"><a href="../about_en/">About Us</a></li> 
+                        <li><a href="https://github.com/thunlp/MultiRD">GitHub Link</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div> 
+    </nav>
+</div>
+<div class="content">
+    
+    <div class="container">
+        <div class="page-header" style="margin-top: 100px;">
+            <h1>About Us</h1>
+        </div>
+        <div class="visible-lg visible-md visible-sm">
+            <div class="row">
+                <div class="col-xs-3" id="myScrollspy">
+                    <ul class="nav nav-tabs nav-stacked" id="myNav" style="width: 200px;">
+                        <li class="active"><a href="#section-1">Institute for Artificial Intelligence, Tsinghua University</a></li>
+                        <!--<li><a href="#section-2">知识智能研究中心</a></li>-->
+                        <li><a href="#section-3">The Natural Language Processing Group, Tsinghua University</a></li>
+                        <li><a href="#section-4">Professor Maosong Sun, the Principal Investigator of THUNLP</a></li>
+                        <li><a href="#section-5">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-9">
+                    <h2 id="section-1">Institute for Artificial Intelligence, Tsinghua University</h2>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div id="THUAI">
+                                        <p style="padding-right:10vh;padding-top:3vh" class="justify">
+                                            Institute for Artificial Intelligence, Tsinghua University, built in June 2018, is a university-level cross-disciplinary research institute. The institute has formed the development strategy of "one core, two fusions", namely taking basic theories and research methods of artificial intelligence as the core and facilitating the fusions of different disciplines and the fusions of technology and industry together with university and enterprise. The institute will make full use of Tsinghua University's unique advantages in multidisciplinary integration, outstanding talents gathering and high-level international cooperation and foster radical innovation in the basic theories and methods of artificial intelligence, aiming to become a high-end artificial intelligence research institute with global influence. Director of the institute is Dr. Bo Zhang, professor of Department of Computer Science and Technology at Tsinghua University and academician of Chinese Academy of Sciences. Chairman of the academic committee is Dr. Andrew Chi-Chih Yao, Dean of the Institute for Interdisciplinary Information Sciences at Tsinghua University and the Turing Award winner.</p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <img src="https://openhownet.thunlp.org/static/img/thuai.png" align="right" style="height:18vh;margin-top:0vh;padding-right:7vh">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <hr>
+                    <h2 id="section-3">The Natural Language Processing Group, Tsinghua University</h2>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p style="padding-right:10vh;padding-top:3vh" class="justify"> The Natural Language Processing Group, Tsinghua University, short for <a href="http://www.thunlp.org">THUNLP</a>, was established in the 1970s. It was first led by Professor Changning Huang, carrying out research on Chinese information processing. It conducted natural language processing (NLP) research earliest and is very influential in China. THUNLP is also the linked unit of the computational linguistics technical committee of Chinese Information Processing Society of China. The faculty members include Professor Maosong Sun, the principal investigator of THUNLP, Professor Yang Liu and Associate Professor Zhiyuan Liu. The group conducts systematic and in-depth research on the front-line basic topics of natural language processing, whose research areas cover the core issues of computational linguistics, social computing and human computing. With the support of programs including 973, 863 and NSFC, members of THUNLP have published many high-level academic papers on international top conferences and journals including AAAI, IJCAI, ACL and EMNLP. In addition, THUNLP has developed long-term cooperations with famous universities and enterprises in the world such as CMU, NUS and Google. The alumni work for well-known higher educational institutions and companies like Tsinghua University, Google, Baidu, Alibaba and Microsoft.
+                                    </p>
+                                    <p style="padding-right:10vh" class="justify">
+                                        <b>WantWords</b> is developed and maintained by THUNLP. Project instructors are Professor Maosong Sun and Zhiyuan Liu, and members comprise Fanchao Qi, Lei Zhang and Yanhui Yang.</p>
+                                </td>
+                                <td>
+                                    <img src="https://openhownet.thunlp.org/static/img/THUNLP.png" style="height:21vh;padding-right:6vh;" align="right">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table> 
+                    <hr>
+                    <h2 id="section-4">Professor Maosong Sun, the Principal Investigator of THUNLP</h2>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div id="sms">
+                                        <p style="padding-right:10vh;padding-top:3vh" class="justify">
+                                            Maosong Sun is a full professor of Department of Computer Science and Technology at Tsinghua University and executive deputy director of the Institute for Artificial Intelligence, Tsinghua University. His research interests mainly lie in NLP, web intelligence, machine learning, social computing and computational pedagogy. Professor Sun is the chief scientist of the National Basic Research Program (973 Program) and the chief expert of major projects of the National Social Science Fund. He has published more than 400 academic papers on international and domestic journals and conferences. He is the first among scholars of mainland China  who published papers on ACL, the top conference of NLP, and CL, the top journal of NLP. His citations have exceeded 10,000 according to Google Scholar. In 2013, he led a team to develop the world's first Chinese MOOC platform xuetangX and made an important contribution to the development of China's online learning. He was awarded the National Advanced Worker in Language in 2007, the National Excellent Science and Technology Worker in 2016 and Learning Star of Beijing Citizens in 2016.</p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <img src="https://openhownet.thunlp.org/static/img/sms.jpeg" align="right" style="height:21vh;margin-top:0px;padding-right:5vh">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table> 
+                    <hr>
+                    <h2 id="section-5">Contact Us</h2>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div id="Contact">
+                                        <br>
+                                        <ul>
+                                            <li><p>Phone：(+8610) 62777701</p></li>
+                                            <li><p>Address：Room 4-505, FIT Building, Tsinghua University, Haidian District, Beijing City, China 100084</p></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table> 
+                </div>
+            </div>
+        </div>
+        <div class="visible-xs">
+            <br>
+            <h2 id="section-1" align="center">Institute for Artificial Intelligence, Tsinghua University</h2>
+            <div align="center"><img src="https://openhownet.thunlp.org/static/img/thuai.png" style="height:18vh;margin-top:2vh"></div>
+            <div id="THUAI">
+                <p style="padding-top:3vh" class="justify">
+                    Institute for Artificial Intelligence, Tsinghua University, built in June 2018, is a university-level cross-disciplinary research institute. The institute has formed the development strategy of "one core, two fusions", namely taking basic theories and research methods of artificial intelligence as the core and facilitating the fusions of different disciplines and the fusions of technology and industry together with university and enterprise. The institute will make full use of Tsinghua University's unique advantages in multidisciplinary integration, outstanding talents gathering and high-level international cooperation and foster radical innovation in the basic theories and methods of artificial intelligence, aiming to become a high-end artificial intelligence research institute with global influence. Director of the institute is Dr. Bo Zhang, professor of Department of Computer Science and Technology at Tsinghua University and academician of Chinese Academy of Sciences. Chairman of the academic committee is Dr. Andrew Chi-Chih Yao, Dean of the Institute for Interdisciplinary Information Sciences at Tsinghua University and the Turing Award winner.</p>
+            </div>
+
+            <hr>
+            <h2 id="section-3" align="center">The Natural Language Processing Group, Tsinghua University</h2>
+            <div align="center"><img src="https://openhownet.thunlp.org/static/img/THUNLP.png" style="height:21vh;margin-top:2vh"></div>
+            <p style="padding-top:3vh" class="justify"> The Natural Language Processing Group, Tsinghua University, short for <a href="http://www.thunlp.org">THUNLP</a>, was established in the 1970s. It was first led by Professor Changning Huang, carrying out research on Chinese information processing. It conducted natural language processing (NLP) research earliest and is very influential in China. THUNLP is also the linked unit of the computational linguistics technical committee of Chinese Information Processing Society of China. The faculty members include Professor Maosong Sun, the principal investigator of THUNLP, Professor Yang Liu and Associate Professor Zhiyuan Liu. The group conducts systematic and in-depth research on the front-line basic topics of natural language processing, whose research areas cover the core issues of computational linguistics, social computing and human computing. With the support of programs including 973, 863 and NSFC, members of THUNLP have published many high-level academic papers on international top conferences and journals including AAAI, IJCAI, ACL and EMNLP. In addition, THUNLP has developed long-term cooperations with famous universities and enterprises in the world such as CMU, NUS and Google. The alumni work for well-known higher educational institutions and companies like Tsinghua University, Google, Baidu, Alibaba and Microsoft.
+            </p><p class="justify">
+            <b>WantWords</b> is developed and maintained by THUNLP. Project instructors are Professor Maosong Sun and Zhiyuan Liu, and members comprise Fanchao Qi, Lei Zhang and Yanhui Yang.
+            </p>
+                            
+            <hr>
+            <h2 id="section-4" align="center">Professor Maosong Sun, the Principal Investigator of THUNLP</h2>
+            <div align="center"><img src="https://openhownet.thunlp.org/static/img/sms.jpeg" style="height:21vh;margin-top:2vh"></div>
+            <div id="sms">
+                <p style="padding-top:3vh" class="justify">
+                    Maosong Sun is a full professor of Department of Computer Science and Technology at Tsinghua University and executive deputy director of the Institute for Artificial Intelligence, Tsinghua University. His research interests mainly lie in NLP, web intelligence, machine learning, social computing and computational pedagogy. Professor Sun is the chief scientist of the National Basic Research Program (973 Program) and the chief expert of major projects of the National Social Science Fund. He has published more than 400 academic papers on international and domestic journals and conferences. He is the first among scholars of mainland China  who published papers on ACL, the top conference of NLP, and CL, the top journal of NLP. His citations have exceeded 10,000 according to Google Scholar. In 2013, he led a team to develop the world's first Chinese MOOC platform xuetangX and made an important contribution to the development of China's online learning. He was awarded the National Advanced Worker in Language in 2007, the National Excellent Science and Technology Worker in 2016 and Learning Star of Beijing Citizens in 2016.</p>
+            </div>
+                            
+            <hr>
+            <h2 id="section-5">Contact Us</h2>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div id="Contact">
+                                <br>
+                                <ul>
+                                    <li><p>Phone：(+8610) 62777701</p></li>
+                                    <li><p>Address：Room 4-505, FIT Building, Tsinghua University, Haidian District, Beijing City, China 100084</p></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table> 
+        </div>
+    </div>
+</div>
+
+
+<footer>
+    <center style="padding-top: 15px; padding-bottom: 10px; width: 100%; font-size: 17px;"> <!--background: #fff url(http://apps.bdimg.com/libs/jqueryui/1.10.4/css/images/ui-bg_highlight-soft_75_cccccc_1x100.png) 50% 50% repeat-x;-->
+        <div class="container">
+            <p><strong>Copyright &copy; </strong><a href="http://www.thunlp.org"><strong>THUNLP</strong></a> <strong>2020</strong></p>
+        </div>
+    </center>
+</footer>
+
+</body>
+</html>
