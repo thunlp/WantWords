@@ -4,7 +4,7 @@ An open-source online reverse dictionary. Website: https://wantwords.thunlp.org/
 ## Pretrained Models and data
 Download and decompress [data and pretrained models](https://cloud.tsinghua.edu.cn/...) to BASE_PATH/website_RD/.
 
-Decompress data.rar under BASE_PATH/website_RD/.
+Decompress `data.rar` under BASE_PATH/website_RD/.
 
 ## Key Requirements
 * Django==2.2.5
