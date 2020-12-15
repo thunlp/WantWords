@@ -18,13 +18,13 @@ Opposite to a regular (forward) dictionary that provides definitions for query w
 ## Our System
 ### Workflow
 
-<img src="resources/workflow.pdf" alt="workflow" style="zoom:80%;" />
+<img src="resources/workflow.png" alt="workflow" style="zoom:30%;" />
 
 ### Core Model
 
 The core model of WantWords is based on our proposed **Multi-channel Reverse Dictionary Model** [[paper](https://ojs.aaai.org/index.php/AAAI/article/view/5365/5221)] [[code](https://github.com/thunlp/MultiRD)], as illustrate in the following figure.
 
-<img src="resources/MRD_model.pdf" alt="rd_example" style="zoom:80%;" />
+<img src="resources/MRD_model.png" alt="model" style="zoom:25%;" />
 
 ### Pre-trained Models and Data
 
