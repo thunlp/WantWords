@@ -59,9 +59,9 @@ If the code or data help you, please cite the following two papers.
   year={2020}
 }
 
-@inproceedings{zheng2020multi,
+@inproceedings{zhang2020multi,
   title={Multi-channel reverse dictionary model},
-  author={Zheng, Lei and Qi, Fanchao and Liu, Zhiyuan and Wang, Yasheng and Liu, Qun and Sun, Maosong},
+  author={Zhang, Lei and Qi, Fanchao and Liu, Zhiyuan and Wang, Yasheng and Liu, Qun and Sun, Maosong},
   booktitle={Proceedings of the AAAI Conference on Artificial Intelligence},
   pages={312--319},
   year={2020}
