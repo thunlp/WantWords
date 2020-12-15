@@ -1,14 +1,14 @@
 <p align="center">
   <a href="https://wantwords.thunlp.org/">
-  	<img src="wantwords_logo.png" width = "300"  alt="WantWords Logo" align=center />
+  	<img src="resources/wantwords_logo.png" width = "300"  alt="WantWords Logo" align=center />
   </a>
 </p>
-<h4 align="center">An open-source online reverse dictionary </h4>
+<h3 align="center">An open-source online reverse dictionary </h3>
 
 ## What Is a Reverse Dictionary?
 Opposite to a regular (forward) dictionary that provides definitions for query words, a reverse dictionary returns words semantically matching the query descriptions.
 
-<img src="rd_example.png" alt="rd_example" style="zoom:50%;" />
+<img src="resources/rd_example.png" alt="rd_example" style="zoom:50%;" />
 
 ## What Can a Reverse Dictionary Do?
 * Solve the *tip-of-the-tongue problem*, the phenomenon of failing to retrieve a word from memory
@@ -16,6 +16,16 @@ Opposite to a regular (forward) dictionary that provides definitions for query w
 * Help word selection (or word dictionary) anomia patients, people who can recognize and describe an object but fail to name it due to neurological disorder
 
 ## Our System
+### Workflow
+
+<img src="resources/workflow.pdf" alt="workflow" style="zoom:80%;" />
+
+### Core Model
+
+The core model of WantWords is based on our proposed **Multi-channel Reverse Dictionary Model** [[paper](https://ojs.aaai.org/index.php/AAAI/article/view/5365/5221)] [[code](https://github.com/thunlp/MultiRD)], as illustrate in the following figure.
+
+<img src="resources/MRD_model.pdf" alt="rd_example" style="zoom:80%;" />
+
 ### Pre-trained Models and Data
 
 [Download](https://cloud.tsinghua.edu.cn/...) and decompress data and pretrained models to BASE_PATH/website_RD/.
