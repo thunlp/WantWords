@@ -28,7 +28,7 @@ The core model of WantWords is based on our proposed **Multi-channel Reverse Dic
 
 ### Pre-trained Models and Data
 
-[Download](https://cloud.tsinghua.edu.cn/...) and decompress data and pretrained models to BASE_PATH/website_RD/.
+[Download](https://cloud.tsinghua.edu.cn/f/db14bbfb78e0452bb2f1/) and decompress data and pretrained models to BASE_PATH/website_RD/.
 
 Decompress `data.rar` under BASE_PATH/website_RD/.
 
