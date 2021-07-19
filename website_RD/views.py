@@ -12,8 +12,8 @@ def md5(str):
     m = hashlib.md5()
     m.update(str.encode("utf8"))
     return m.hexdigest()
-appid = '20190702000313879' 
-secretKey = 'D2u0Ofr6HAck3JleYhz5' 
+appid = '20***************79' 
+secretKey = 'D2u0***********Yhz5' 
 
 BASE_DIR = './website_RD/'
 device = torch.device('cpu')
