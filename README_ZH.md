@@ -1,7 +1,7 @@
 ### 中|[En](README.md)
 <p align="center">
   <a href="https://wantwords.thunlp.org/">
-  	<img src="resources/wantwords_logo.svg" width = "300"  alt="WantWords Logo" align="center" />
+  	<img src="resources/wantwords_logo.svg" width = "300"  alt="WantWords Logo"/>
   </a>
 </p>
 <h3 align="center">首个支持中文及跨语言查询的开源在线反向词典 </h3>
@@ -9,7 +9,9 @@
 ## 什么是反向词典?
 普通的词典告诉你某个词语的定义，而反向词典恰好相反，可以告诉你哪些词语符合你输入描述的意思。下图为万词王在线反向词典的页面截图，其中演示了反向查词的一个示例，输入“山非常高”，系统将返回一系列模型认为表达“山非常高”意思的词语，例如“高峻”、“巍峨”等。
 
-<img src="resources/screenshot.png" alt="rd_example" width = "700"  align="center" />
+<div align=center>
+<img src="resources/screenshot.png" alt="rd_example" width = "700"  />
+</div>
 
 ## 反向词典可以用来做什么?
 * 解决“舌尖现象”（*tip-of-the-tongue*，又称话到嘴边说不出来），即暂时性忘词的问题
@@ -19,13 +21,17 @@
 ## 系统架构
 ### 工作流
 
-<img src="resources/workflow_ZH.png" alt="workflow" width = "500"  align="center"/>
+<div align=center>
+<img src="resources/workflow_ZH.png" alt="workflow" width = "500"/>
+</div>
 
 ### 核心模型
 
 万词王的核心模型为我们此前发表在AAAI-20上的一篇论文提出的多通道反向词典模型：**Multi-channel Reverse Dictionary Model** [[论文](https://ojs.aaai.org/index.php/AAAI/article/view/5365/5221)] [[代码](https://github.com/thunlp/MultiRD)]，其模型架构如下所示。
 
-<img src="resources/MRD_model_ZH.png" alt="model" width = "500"  align="center"/>
+<div align=center>
+<img src="resources/MRD_model_ZH.png" alt="model" width = "500" />
+</div>
 
 ### 模型和数据
 
