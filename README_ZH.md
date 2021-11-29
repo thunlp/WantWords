@@ -33,9 +33,6 @@
 <img src="resources/MRD_model_ZH.png" alt="model" width = "500" />
 </div>
 
-### 模型和数据
-
-[下载](https://cloud.tsinghua.edu.cn/f/db14bbfb78e0452bb2f1/)并解压数据和模型到`BASE_PATH/website_RD/`即可。
 
 ### 关键依赖
 * Django==2.2.5

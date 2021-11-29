@@ -33,9 +33,6 @@ The core model of WantWords is based on our proposed **Multi-channel Reverse Dic
 <img src="resources/MRD_model.png" alt="model" width = "500" />
 </div>
 
-### Pre-trained Models and Data
-
-[Download](https://cloud.tsinghua.edu.cn/f/db14bbfb78e0452bb2f1/) and decompress data and pretrained models to `BASE_PATH/website_RD/`.
 
 ### Key Requirements
 * Django==2.2.5
