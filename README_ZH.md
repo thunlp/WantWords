@@ -4,9 +4,10 @@
   	<img src="resources/wantwords_logo.svg" width = "300"  alt="WantWords Logo"/>
   </a>
 </p>
-<h3 align="center">首个支持中文及跨语言查询的开源在线反向词典 </h3>
+<h3 align="center">首个支持中文及跨语言查询的开源在线反向词典 [<a href="https://wantwords.thunlp.org/">点击访问</a>] </h3>
 
 ## 什么是反向词典?
+
 普通的词典告诉你某个词语的定义，而反向词典恰好相反，可以告诉你哪些词语符合你输入描述的意思。下图为万词王在线反向词典的页面截图，其中演示了反向查词的一个示例，输入“山非常高”，系统将返回一系列模型认为表达“山非常高”意思的词语，例如“高峻”、“巍峨”等。
 
 <div align=center>
