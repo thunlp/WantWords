@@ -35,7 +35,12 @@
 </div>
 
 
+### 模型和数据
+
+可从[此处](https://cloud.tsinghua.edu.cn/d/811dcb428ed24480bc60/)下载并解压模型和数据到 `BASE_PATH/website_RD/` 以构建此系统。
+
 ### 关键依赖
+
 * Django==2.2.5
 * django-cors-headers==3.5.0
 * numpy==1.17.2
