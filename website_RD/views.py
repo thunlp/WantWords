@@ -29,7 +29,6 @@ tokenizer_Ch = tokenizer_class.from_pretrained('bert-base-chinese')
 tokenizer_En = tokenizer_class.from_pretrained('bert-base-uncased')
 #========================ChineseRD
 MODE = 'Psc'
-model_num = '4Psc1'
 lac = thulac.thulac()
 
 def load_data():
@@ -50,11 +49,6 @@ word2index, index2word, wd_features, mask_ = load_data()
 (mask_c, mask_s) = mask_
 index2word = np.array(index2word)
 
-# 添加汉英词典直译方法
-Ch_En = json.load(open(BASE_DIR+'wordTrans_Ch_En_Sort.json', 'r'))
-# 添加英汉词典直译方法
-En_Ch = json.load(open(BASE_DIR+'wordTrans_En_Ch_Sort.json', 'r'))
-
 # 添加同义词词林用于描述为一个词时的同义词推荐
 index2synset = [[] for i in range(len(word2index))]
 for line in open(BASE_DIR + 'word2synset_synset.txt').readlines():
@@ -63,7 +57,7 @@ for line in open(BASE_DIR + 'word2synset_synset.txt').readlines():
     for syn in synset:
         index2synset[word2index[wd]].append(word2index[syn])
 
-MODEL_FILE = BASE_DIR + model_num+'_saved.model'
+MODEL_FILE = BASE_DIR + 'Zh.model'
 model = torch.load(MODEL_FILE, map_location=lambda storage, loc: storage)
 model.eval()
 wd_data_ = json.load(open(BASE_DIR+'wd_def_for_website_xhzd+ch+xh.json'))
@@ -79,8 +73,7 @@ del wd_data_
 
 #========================EnglishRD
 MODE_en = 'rsl'
-model_num_en = '1rsl' #'5rsl2'
-MODEL_FILE_en = BASE_DIR + model_num_en + '_saved.model'
+MODEL_FILE_en = BASE_DIR + 'En.model'
 wd_data_en_ = json.load(open(BASE_DIR+'wd_def_for_website_En.json'))
 
 wd_data_en = wd_data_en_.copy()
@@ -215,21 +208,16 @@ def ChineseRD(request):
     description = request.GET['description']
     RD_mode = request.GET['mode']
     if RD_mode=='EC':
-        desc = re.sub('[%s]' % re.escape(string.punctuation), ' ', description).strip()
-        if len(desc.split())==1 and desc in En_Ch:
-            description = En_Ch[desc]
-        else:
-            q = description
-            fromLang = 'en'
-            toLang = 'zh'
-            salt = "35555"
-            sign = appid+q+salt+secretKey
-            sign = md5(sign)
-            url = "http://api.fanyi.baidu.com/api/trans/vip/translate"
-            url = url + '?appid='+appid+'&q='+urllib.parse.quote(q)+'&from='+fromLang+'&to='+toLang+'&salt='+str(salt)+'&sign='+sign
-            response = requests.request("GET", url)
-            description = eval(response.text)['trans_result'][0]['dst']
-            #print('-------translation: ',description)
+        q = description
+        fromLang = 'en'
+        toLang = 'zh'
+        salt = "35555"
+        sign = appid+q+salt+secretKey
+        sign = md5(sign)
+        url = "http://api.fanyi.baidu.com/api/trans/vip/translate"
+        url = url + '?appid='+appid+'&q='+urllib.parse.quote(q)+'&from='+fromLang+'&to='+toLang+'&salt='+str(salt)+'&sign='+sign
+        response = requests.request("GET", url)
+        description = eval(response.text)['trans_result'][0]['dst']
     with torch.no_grad():
         if description == "你好":
             description = "你好？"
@@ -322,21 +310,16 @@ def ChineseRDCluster(request):
     description = request.GET['description']
     RD_mode = request.GET['mode']
     if RD_mode=='EC':
-        desc = re.sub('[%s]' % re.escape(string.punctuation), ' ', description).strip()
-        if len(desc.split())==1 and desc in En_Ch:
-            description = En_Ch[desc]
-        else:
-            q = description
-            fromLang = 'en'
-            toLang = 'zh'
-            salt = "35555"
-            sign = appid+q+salt+secretKey
-            sign = md5(sign)
-            url = "http://api.fanyi.baidu.com/api/trans/vip/translate"
-            url = url + '?appid='+appid+'&q='+urllib.parse.quote(q)+'&from='+fromLang+'&to='+toLang+'&salt='+str(salt)+'&sign='+sign
-            response = requests.request("GET", url)
-            description = eval(response.text)['trans_result'][0]['dst']
-            #print('-------translation: ',description)
+        q = description
+        fromLang = 'en'
+        toLang = 'zh'
+        salt = "35555"
+        sign = appid+q+salt+secretKey
+        sign = md5(sign)
+        url = "http://api.fanyi.baidu.com/api/trans/vip/translate"
+        url = url + '?appid='+appid+'&q='+urllib.parse.quote(q)+'&from='+fromLang+'&to='+toLang+'&salt='+str(salt)+'&sign='+sign
+        response = requests.request("GET", url)
+        description = eval(response.text)['trans_result'][0]['dst']
     with torch.no_grad():
         if description == "你好":
             description = "你好？"
@@ -428,33 +411,16 @@ def EnglishRDCluster(request):
         filter = re.compile(r"[\u4e00-\u9fa5]+")
         desc = ''.join(filter.findall(description))
         def_words = [w for w, p in lac.cut(desc)]
-        FLAG = False
-        if (desc in Ch_En) or (len(def_words) == 1 and (def_words[0] in Ch_En)):
-            try:
-                En_words = Ch_En[desc]
-            except:
-                En_words = Ch_En[def_words[0]]
-            for w in En_words:
-                ww = re.sub('[%s]' % re.escape(string.punctuation), ' ', w).split()
-                if len(ww) == 1: # 发现单词立即跳出，用该词找近义词。
-                    if ww[0].lower() in word2index_en:
-                        description = ww[0]
-                        FLAG = True
-                        break
-            if not FLAG:
-                description = '. '.join(En_words)
-        else:
-            q = description
-            fromLang = 'zh'
-            toLang = 'en'
-            salt = "35555"
-            sign = appid+q+salt+secretKey
-            sign = md5(sign)
-            url = "http://api.fanyi.baidu.com/api/trans/vip/translate"
-            url = url + '?appid='+appid+'&q='+urllib.parse.quote(q)+'&from='+fromLang+'&to='+toLang+'&salt='+str(salt)+'&sign='+sign
-            response = requests.request("GET", url)
-            description = eval(response.text)['trans_result'][0]['dst']
-        #print(description)
+        q = description
+        fromLang = 'zh'
+        toLang = 'en'
+        salt = "35555"
+        sign = appid+q+salt+secretKey
+        sign = md5(sign)
+        url = "http://api.fanyi.baidu.com/api/trans/vip/translate"
+        url = url + '?appid='+appid+'&q='+urllib.parse.quote(q)+'&from='+fromLang+'&to='+toLang+'&salt='+str(salt)+'&sign='+sign
+        response = requests.request("GET", url)
+        description = eval(response.text)['trans_result'][0]['dst']
     with torch.no_grad():
         def_words = re.sub('[%s]' % re.escape(string.punctuation), ' ', description)
         def_words = def_words.lower()
@@ -540,35 +506,16 @@ def EnglishRD(request):
     description = request.GET['description']
     RD_mode = request.GET['mode']
     if RD_mode=='CE':
-        filter = re.compile(r"[\u4e00-\u9fa5]+")
-        desc = ''.join(filter.findall(description))
-        def_words = [w for w, p in lac.cut(desc)]
-        FLAG = False
-        if (desc in Ch_En) or (len(def_words) == 1 and (def_words[0] in Ch_En)):
-            try:
-                En_words = Ch_En[desc]
-            except:
-                En_words = Ch_En[def_words[0]]
-            for w in En_words:
-                ww = re.sub('[%s]' % re.escape(string.punctuation), ' ', w).split()
-                if len(ww) == 1: # 发现单词立即跳出，用该词找近义词。
-                    if ww[0].lower() in word2index_en:
-                        description = ww[0]
-                        FLAG = True
-                        break
-            if not FLAG:
-                description = '. '.join(En_words)
-        else:
-            q = description
-            fromLang = 'zh'
-            toLang = 'en'
-            salt = "35555"
-            sign = appid+q+salt+secretKey
-            sign = md5(sign)
-            url = "http://api.fanyi.baidu.com/api/trans/vip/translate"
-            url = url + '?appid='+appid+'&q='+urllib.parse.quote(q)+'&from='+fromLang+'&to='+toLang+'&salt='+str(salt)+'&sign='+sign
-            response = requests.request("GET", url)
-            description = eval(response.text)['trans_result'][0]['dst']
+        q = description
+        fromLang = 'zh'
+        toLang = 'en'
+        salt = "35555"
+        sign = appid+q+salt+secretKey
+        sign = md5(sign)
+        url = "http://api.fanyi.baidu.com/api/trans/vip/translate"
+        url = url + '?appid='+appid+'&q='+urllib.parse.quote(q)+'&from='+fromLang+'&to='+toLang+'&salt='+str(salt)+'&sign='+sign
+        response = requests.request("GET", url)
+        description = eval(response.text)['trans_result'][0]['dst']
         #print(description)
     with torch.no_grad():
         def_words = re.sub('[%s]' % re.escape(string.punctuation), ' ', description)
