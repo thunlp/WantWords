@@ -60,9 +60,9 @@ for line in open(BASE_DIR + 'word2synset_synset.txt').readlines():
 MODEL_FILE = BASE_DIR + 'Zh.model'
 model = torch.load(MODEL_FILE, map_location=lambda storage, loc: storage)
 model.eval()
-wd_data_ = json.load(open(BASE_DIR+'wd_def_for_website_xhzd+ch+xh.json'))
+wd_data_ = json.load(open(BASE_DIR+'wd_def_for_website_zh.json'))
 
-#wd_data = dict() # 这样竟然会导致内存泄露？！因为用这个方法时内存直接耗没了，而用下面的copy方法就没问题。
+#wd_data = dict()
 wd_data = wd_data_.copy()
 wd_defi = wd_data_.copy()
 for wd in wd_data_:
@@ -114,13 +114,9 @@ def mask_noFeature(label_size, wd2fea, feature_num):
     return mask_nofea
  
 (_, (_, label_size, _, _), (word2index_en, index2word_en, index2sememe, index2lexname, index2rootaffix)) = np.load(BASE_DIR + 'data_inUse1_en.npy', allow_pickle=True)
-print('-------------------------1')   
-#(data_train_idx, data_dev_idx, data_test_idx) = np.load(BASE_DIR + 'data_inUse2_en.npy', allow_pickle=True)
-#data_all_idx = data_train_idx + data_dev_idx + data_test_idx
 (data_train_idx, data_dev_idx, data_test_500_seen_idx, data_test_500_unseen_idx, data_defi_c_idx, data_desc_c_idx) = np.load(BASE_DIR + 'data_inUse2_en.npy', allow_pickle=True)
 data_all_idx = data_train_idx + data_dev_idx + data_test_500_seen_idx + data_test_500_unseen_idx + data_defi_c_idx
 index2word_en = np.array(index2word_en)
-print('-------------------------2')
 sememe_num = len(index2sememe)
 wd2sem = word2feature(data_all_idx, label_size, sememe_num, 'sememes')
 wd_sems_ = label_multihot(wd2sem, sememe_num)
@@ -147,10 +143,8 @@ for line in open(BASE_DIR + 'word_synsetWords.txt').readlines():
     synset = line.split()[1:]
     for syn in synset:
         index2synset_en[word2index_en[wd]].append(word2index_en[syn])
-print('-------------------------4')
 model_en = torch.load(MODEL_FILE_en, map_location=lambda storage, loc: storage)
 model_en.eval()
-print('-------------------------5')
 def home(request):
     return render(request, 'home.html')
     
@@ -174,11 +168,7 @@ def admin(request):
         value = str(value).replace(', 0', ', ') # replace 0 to null for painting
         return value
     weekvalue = fixvalue2str(weekvalue)
-    #month2019v = fixvalue2str(month2019v)
-    #month2020v = fixvalue2str(month2020v)
-
     return render(request, 'admin.html', context=locals())
-    #return render(request, 'admin.html')
 
 def about(request):
     return render(request, 'about.html')
@@ -219,8 +209,6 @@ def ChineseRD(request):
         response = requests.request("GET", url)
         description = eval(response.text)['trans_result'][0]['dst']
     with torch.no_grad():
-        if description == "你好":
-            description = "你好？"
         def_words = [w for w, p in lac.cut(description)]
         def_word_idx = []
         if len(def_words) > 0:
@@ -228,21 +216,18 @@ def ChineseRD(request):
                 if def_word in word2index:
                     def_word_idx.append(word2index[def_word])
                 else:
-                    #======================================= word cut to char when not in word2vec
                     for dw in def_word:
                         try:
                             def_word_idx.append(word2index[dw])
                         except:
                             def_word_idx.append(word2index['<OOV>'])
-                    #=======================================
             x_len = len(def_word_idx)
             if set(def_word_idx)=={word2index['<OOV>']}:
                 x_len = 1
             if x_len==1:
                 if def_word_idx[0]>1:
-                    #词向量找相关词，排序后，如果在词林里，则对应的同义词的分数乘以2？
                     score = ((model.embedding.weight.data).mm((model.embedding.weight.data[def_word_idx[0]]).unsqueeze(1))).squeeze(1)
-                    if RD_mode=='CC': #当CC的时候，排除自身，EC的时候自身是最准确的，不排除。
+                    if RD_mode=='CC':
                         score[def_word_idx[0]] = -10.
                     score[np.array(index2synset[def_word_idx[0]])] *= 2
                     sc, indices = torch.sort(score, descending=True)
@@ -270,7 +255,7 @@ def ChineseRD(request):
             ret = {'error': 0} # 输入为空
     if len(predicted)>0:
         res = index2word[predicted]
-        ret = [] # 不能以字典形式返回，因为字典是无序的，这里需要用列表来保持顺序。
+        ret = [] 
         cn = -1
         if RD_mode=='CC':
             def_words = set(def_words)
@@ -278,7 +263,7 @@ def ChineseRD(request):
                 cn += 1
                 if wd not in def_words:
                     try:
-                        ret.append(wd_data[wd]) # wd_data[wd] = {'word':字典, 'definition':defis, 'POS':['名'], 'bihuashu':14, 'bihuashu1st':6, 'length':2, 'pinyin':'zì diǎn', 'pinyinshouzimu': 'z d'}]
+                        ret.append(wd_data[wd])
                         ret[len(ret)-1]['c'] = s2h[cn]
                     except:
                         continue
@@ -286,13 +271,13 @@ def ChineseRD(request):
             for wd in res:
                 cn += 1
                 try:
-                    ret.append(wd_data[wd]) # wd_data[wd] = {'word':字典, 'definition':defis, 'POS':['名'], 'bihuashu':14, 'bihuashu1st':6, 'length':2, 'pinyin':'zì diǎn', 'pinyinshouzimu': 'z d'}]
+                    ret.append(wd_data[wd])
                     ret[len(ret)-1]['c'] = s2h[cn]
                 except:
                     continue
     return HttpResponse(json.dumps(ret,ensure_ascii=False),content_type="application/json,charset=utf-8")
 
-def getClass2Class(r, score): # 聚类时的排序是随机的，这里根据每类的前5个计算各类的平均分，按分高低排序各类顺序（按新顺序给类编号）
+def getClass2Class(r, score): 
     perCluster = [[],[],[],[],[],[]]
     for i in range(GET_NUM):
         perCluster[r[i]].append(score[i])
@@ -321,8 +306,6 @@ def ChineseRDCluster(request):
         response = requests.request("GET", url)
         description = eval(response.text)['trans_result'][0]['dst']
     with torch.no_grad():
-        if description == "你好":
-            description = "你好？"
         def_words = [w for w, p in lac.cut(description)]
         def_word_idx = []
         if len(def_words) > 0:
@@ -330,21 +313,18 @@ def ChineseRDCluster(request):
                 if def_word in word2index:
                     def_word_idx.append(word2index[def_word])
                 else:
-                    #======================================= word cut to char when not in word2vec
                     for dw in def_word:
                         try:
                             def_word_idx.append(word2index[dw])
                         except:
                             def_word_idx.append(word2index['<OOV>'])
-                    #=======================================
             x_len = len(def_word_idx)
             if set(def_word_idx)=={word2index['<OOV>']}:
                 x_len = 1
             if x_len==1:
                 if def_word_idx[0]>1:
-                    #词向量找相关词，排序后，如果在词林里，则对应的同义词的分数乘以2？
                     score = ((model.embedding.weight.data).mm((model.embedding.weight.data[def_word_idx[0]]).unsqueeze(1))).squeeze(1)
-                    if RD_mode=='CC': #当CC的时候，排除自身，EC的时候自身是最准确的，不排除。
+                    if RD_mode=='CC':
                         score[def_word_idx[0]] = -10.
                     score[np.array(index2synset[def_word_idx[0]])] *= 2
                     sc, indices = torch.sort(score, descending=True)
@@ -376,7 +356,7 @@ def ChineseRDCluster(request):
             ret = {'error': 0} # 输入为空
     if len(predicted)>0:
         res = index2word[predicted]
-        ret = [] # 不能以字典形式返回，因为字典是无序的，这里需要用列表来保持顺序。
+        ret = [] 
         cn = -1
         if RD_mode=='CC':
             def_words = set(def_words)
@@ -384,7 +364,7 @@ def ChineseRDCluster(request):
                 cn += 1
                 if wd not in def_words:
                     try:
-                        ret.append(wd_data[wd]) # wd_data[wd] = {'word':字典, 'definition':defis, 'POS':['名'], 'bihuashu':14, 'bihuashu1st':6, 'length':2, 'pinyin':'zì diǎn', 'pinyinshouzimu': 'z d'}]
+                        ret.append(wd_data[wd])
                         ret[len(ret)-1]['c'] = s2h[cn]
                         ret[len(ret)-1]['C'] = class2class[int(r[cn])] # 必须转为int，否则其实是int64类型，会报不能json序列化的错误
                         ret[len(ret)-1]['d'] = wd_defi[wd]
@@ -395,7 +375,7 @@ def ChineseRDCluster(request):
             for wd in res:
                 cn += 1
                 try:
-                    ret.append(wd_data[wd]) # wd_data[wd] = {'word':字典, 'definition':defis, 'POS':['名'], 'bihuashu':14, 'bihuashu1st':6, 'length':2, 'pinyin':'zì diǎn', 'pinyinshouzimu': 'z d'}]
+                    ret.append(wd_data[wd])
                     ret[len(ret)-1]['c'] = s2h[cn]
                     ret[len(ret)-1]['C'] = class2class[int(r[cn])] # 必须转为int，否则其实是int64类型，会报不能json序列化的错误
                     ret[len(ret)-1]['d'] = wd_defi[wd]
@@ -437,9 +417,8 @@ def EnglishRDCluster(request):
                 x_len = 1
             if x_len==1:
                 if def_word_idx[0]>1:
-                    #词向量找相关词，排序后，如果在WordNet的synset里，则对应的同义词的分数乘以2？
                     score = ((model_en.embedding.weight.data).mm((model_en.embedding.weight.data[def_word_idx[0]]).unsqueeze(1))).squeeze(1)
-                    if RD_mode=='EE': #当EE的时候，排除自身，CE的时候自身是最准确的，不排除。
+                    if RD_mode=='EE': 
                         score[def_word_idx[0]] = -10.
                     score[np.array(index2synset_en[def_word_idx[0]])] *= 2
                     sc, indices = torch.sort(score, descending=True)
@@ -472,7 +451,7 @@ def EnglishRDCluster(request):
             ret = {'error': 0} # 输入为空
     if len(predicted)>0:
         res = index2word_en[predicted]
-        ret = [] # 不能以字典形式返回，因为字典是无序的，这里需要用列表来保持顺序。
+        ret = [] 
         cn = -1
         if RD_mode == "EE":
             def_words = set(def_words)
@@ -533,9 +512,8 @@ def EnglishRD(request):
                 x_len = 1
             if x_len==1:
                 if def_word_idx[0]>1:
-                    #词向量找相关词，排序后，如果在WordNet的synset里，则对应的同义词的分数乘以2？
                     score = ((model_en.embedding.weight.data).mm((model_en.embedding.weight.data[def_word_idx[0]]).unsqueeze(1))).squeeze(1)
-                    if RD_mode=='EE': #当EE的时候，排除自身，CE的时候自身是最准确的，不排除。
+                    if RD_mode=='EE': 
                         score[def_word_idx[0]] = -10.
                     score[np.array(index2synset_en[def_word_idx[0]])] *= 2
                     sc, indices = torch.sort(score, descending=True)
@@ -565,7 +543,7 @@ def EnglishRD(request):
             ret = {'error': 0} # 输入为空
     if len(predicted)>0:
         res = index2word_en[predicted]
-        ret = [] # 不能以字典形式返回，因为字典是无序的，这里需要用列表来保持顺序。
+        ret = []
         cn = -1
         if RD_mode == "EE":
             def_words = set(def_words)
