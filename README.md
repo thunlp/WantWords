@@ -6,6 +6,15 @@
 </p>
 <h3 align="center">An Open-source Online Reverse Dictionary [<a href="https://wantwords.thunlp.org/">link</a>] </h3>
 
+## News
+
+The WantWords MiniProgram has been launched. Welcome to scan the following QR code to try it!
+<div align=center>
+<img src="resources/miniprogram.jpg" width = "300"  alt="MiniProgram QR code"/>
+</div>
+
+
+
 ## What Is a Reverse Dictionary?
 Opposite to a regular (forward) dictionary that provides definitions for query words, a reverse dictionary returns words semantically matching the query descriptions.
 
