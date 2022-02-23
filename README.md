@@ -4,7 +4,7 @@
   	<img src="resources/wantwords_logo.svg" width = "300"  alt="WantWords Logo"  />
   </a>
 </p>
-<h3 align="center">An Open-source Online Reverse Dictionary [<a href="https://wantwords.thunlp.org/">link</a>] </h3>
+<h3 align="center">An Open-source Online Reverse Dictionary [<a href="https://wantwords.net/">link</a>] </h3>
 
 ## News
 
